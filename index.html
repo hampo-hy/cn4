@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>중국의 4대 전통 명절</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Reveal.js CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" />
+
+  <!-- GSAP CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/DrawSVGPlugin.min.js"></script>
+
+  <style>
+    /* =============================================
+       GLOBAL RESET & BASE
+    ============================================= */
+    :root {
+      --cream: #f5f0e8;
+      --cream-dark: #ede5d8;
+      --red-dark: #8b1c1c;
+      --red-mid: #a52a2a;
+      --red-light: #c0392b;
+      --gold: #b5860d;
+      --gold-light: #d4a017;
+      --text-dark: #2c1810;
+      --text-mid: #4a3728;
+      --text-light: #6b5042;
+      --green-qingming: #5a8a5a;
+      --green-light: #7ab87a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      margin: 0;
+      padding: 0;
+    }
+
+    .reveal {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .reveal .slides section {
+      text-align: left;
+      height: 100%;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* =============================================
+       SLIDE 1 – TITLE
+    ============================================= */
+    .slide-title {
+      background: var(--cream);
+      width: 100%;
+      height: 100%;
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative corner circle */
+    .title-circle-deco {
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 3px solid rgba(139,28,28,0.15);
+      pointer-events: none;
+    }
+    .title-circle-deco::after {
+      content: '';
+      position: absolute;
+      top: 20px; left: 20px; right: 20px; bottom: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(139,28,28,0.1);
+    }
+
+    /* Floating particle dots */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(139,28,28,0.12);
+      pointer-events: none;
+    }
+
+    /* Frame border */
+    .title-frame {
+      position: absolute;
+      inset: 15px;
+      border: 1.5px solid rgba(139,28,28,0.18);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    .slide-title h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-weight: 900;
+      font-size: 3.8em;
+      color: var(--red-dark);
+      margin: 0 0 0.3em;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-title .subtitle {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.88em;
+      color: var(--text-mid);
+      text-align: center;
+      line-height: 2.0;
+      white-space: nowrap;
+      width: fit-content;
+      margin: 0 auto;
+      align-self: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .title-line {
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red-dark), transparent);
+      margin: 0.6em auto 1em;
+    }
+
+    /* =============================================
+       SLIDES 2-5 – FESTIVAL SLIDES (split layout)
+    ============================================= */
+    .slide-festival {
+      background: var(--cream);
+      width: 100%;
+      height: 100%;
+      display: flex !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .festival-content {
+      width: 50%;
+      padding: 4% 5% 4% 6%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .festival-image {
+      width: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .festival-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform-origin: center center;
+    }
+
+    /* Image overlay gradient */
+    .festival-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--cream) 0%, transparent 15%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Number + Title header */
+    .festival-label {
+      font-family: 'Noto Serif KR', serif;
+      font-weight: 700;
+      font-size: 1.15em;
+      color: var(--red-dark);
+      margin-bottom: 0.2em;
+    }
+
+    .festival-label .pinyin {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--gold);
+      font-size: 0.9em;
+      margin-left: 0.3em;
+    }
+
+    .festival-divider {
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red-dark), transparent);
+      margin: 0.4em 0 0.8em;
+    }
+
+    .festival-main-title {
+      font-family: 'Noto Serif KR', serif;
+      font-weight: 700;
+      font-size: 1.6em;
+      color: var(--red-dark);
+      margin: 0 0 0.8em;
+      line-height: 1.3;
+    }
+
+    /* Bullet items */
+    .bullet-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.7em;
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    .bullet-diamond {
+      color: var(--red-dark);
+      font-size: 0.9em;
+      margin-right: 0.5em;
+      margin-top: 0.1em;
+      flex-shrink: 0;
+      opacity: 0;
+    }
+
+    .bullet-text {
+      font-size: 0.72em;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    .bullet-text strong {
+      color: var(--red-mid);
+    }
+
+    /* =============================================
+       SLIDE 6 – COMPARISON TABLE
+    ============================================= */
+    .slide-table {
+      background: var(--cream);
+      width: 100%;
+      height: 100%;
+      display: flex !important;
+      flex-direction: column;
+      padding: 5% 7%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .table-title {
+      font-family: 'Noto Serif KR', serif;
+      font-weight: 700;
+      font-size: 1.7em;
+      color: var(--red-dark);
+      margin-bottom: 0.2em;
+    }
+
+    .table-divider {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red-dark), rgba(139,28,28,0.2));
+      margin-bottom: 0.8em;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75em;
+      flex: 1;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1em 1em;
+      text-align: left;
+      border: 1px solid rgba(139,28,28,0.2);
+      vertical-align: middle;
+    }
+
+    .comparison-table thead th {
+      background: rgba(139,28,28,0.1);
+      color: var(--red-dark);
+      font-weight: 700;
+      font-family: 'Noto Serif KR', serif;
+      padding: 0.9em 1em;
+    }
+
+    .comparison-table tbody tr {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .comparison-table tbody tr:nth-child(even) td {
+      background: rgba(139,28,28,0.04);
+    }
+
+    .comparison-table tbody td:first-child {
+      color: var(--red-mid);
+      font-weight: 700;
+    }
+
+    /* =============================================
+       SLIDE 7 – THANK YOU
+    ============================================= */
+    .slide-thankyou {
+      background: var(--cream);
+      width: 100%;
+      height: 100%;
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thankyou-main {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 4.5em;
+      color: var(--red-dark);
+      letter-spacing: 0.05em;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .thankyou-sub {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.1em;
+      color: var(--gold);
+      text-align: center;
+      margin-top: 0.3em;
+      letter-spacing: 0.2em;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* =============================================
+       GLOBAL DECORATIVE ELEMENTS
+    ============================================= */
+    .corner-circle {
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 3px solid rgba(139,28,28,0.12);
+      pointer-events: none;
+    }
+    .corner-circle::after {
+      content: '';
+      position: absolute;
+      top: 20px; left: 20px; right: 20px; bottom: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(139,28,28,0.08);
+    }
+
+    /* Progress bar */
+    .reveal .progress span {
+      background: var(--red-dark);
+    }
+
+    /* Slide number */
+    .reveal .slide-number {
+      color: var(--red-dark);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.6em;
+      background: rgba(245,240,232,0.8);
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    /* =============================================
+       PARTICLE CANVAS
+    ============================================= */
+    #particle-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* =============================================
+       SCROLL HINT
+    ============================================= */
+    .scroll-hint {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.55em;
+      color: var(--text-light);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 100;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .scroll-hint .arrow {
+      font-size: 1.3em;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+    }
+
+    /* Ripple effect on slide transition */
+    .ripple-overlay {
+      position: fixed;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,28,28,0.15), transparent 70%);
+      transform: scale(0);
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* =============================================
+       FESTIVAL NUMBER BADGE
+    ============================================= */
+    .festival-num {
+      font-size: 5em;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: rgba(139,28,28,0.06);
+      position: absolute;
+      bottom: 10%;
+      left: 4%;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* =============================================
+       SHIMMER effect on image
+    ============================================= */
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* =============================================
+       TABLE ROW HIGHLIGHT on hover
+    ============================================= */
+    .comparison-table tbody tr {
+      transition: background 0.3s;
+    }
+
+    .comparison-table tbody tr:hover td {
+      background: rgba(139,28,28,0.1) !important;
+      cursor: default;
+    }
+
+    /* =============================================
+       COUNTER BADGE (slide 6 table)
+    ============================================= */
+    .row-icon {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--red-dark);
+      color: white;
+      font-size: 0.75em;
+      line-height: 22px;
+      text-align: center;
+      margin-right: 6px;
+      font-weight: 700;
+    }
+
+    /* Lantern SVG animation */
+    .lantern-svg {
+      position: absolute;
+      top: 5%;
+      right: 3%;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    /* =============================================
+       QINGMING SLIDE — green accent
+    ============================================= */
+    .slide-qingming .festival-main-title,
+    .slide-qingming .festival-label {
+      color: var(--green-qingming);
+    }
+    .slide-qingming .festival-divider {
+      background: linear-gradient(90deg, var(--green-qingming), transparent);
+    }
+    .slide-qingming .bullet-diamond,
+    .slide-qingming .bullet-text strong {
+      color: var(--green-qingming);
+    }
+
+    /* Background gradient accent per festival */
+    .accent-red { background: linear-gradient(135deg, #f5f0e8 0%, #fde8e8 100%); }
+    .accent-green { background: linear-gradient(135deg, #f5f0e8 0%, #e8f5e8 100%); }
+    .accent-yellow { background: linear-gradient(135deg, #f5f0e8 0%, #fdf5e0 100%); }
+    .accent-blue { background: linear-gradient(135deg, #f5f0e8 0%, #e8eff5 100%); }
+
+    /* Reveal overrides */
+    .reveal .slides { width: 100% !important; }
+    .reveal .slides > section { padding: 0 !important; }
+
+    /* Masking clip for image reveal */
+    .img-mask {
+      clip-path: inset(0 100% 0 0);
+    }
+
+    /* Glow on title */
+    .glow-text {
+      text-shadow: 0 0 40px rgba(139,28,28,0.2);
+    }
+
+    /* Word-by-word text split helper */
+    .word { display: inline-block; }
+
+  </style>
+</head>
+<body>
+
+<!-- Particle canvas for ambient effect -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- Ripple overlay for transitions -->
+<div class="ripple-overlay" id="ripple"></div>
+
+<!-- Scroll hint -->
+<div class="scroll-hint">
+  <span>→ / ↓ 키 또는 클릭으로 이동</span>
+  <span class="arrow">→</span>
+</div>
+
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ==========================================
+         SLIDE 1: 타이틀
+    =========================================== -->
+    <section class="slide-title" id="slide1">
+      <div class="title-frame" id="s1-frame"></div>
+      <div class="title-circle-deco" id="s1-circle"></div>
+
+      <!-- Floating particles -->
+      <div class="particle" id="p1" style="width:8px;height:8px;top:20%;left:15%"></div>
+      <div class="particle" id="p2" style="width:5px;height:5px;top:70%;left:10%"></div>
+      <div class="particle" id="p3" style="width:10px;height:10px;top:30%;right:20%"></div>
+      <div class="particle" id="p4" style="width:6px;height:6px;top:80%;right:15%"></div>
+      <div class="particle" id="p5" style="width:4px;height:4px;top:50%;left:5%"></div>
+
+      <!-- Lantern SVG deco -->
+      <svg class="lantern-svg" width="120" height="200" viewBox="0 0 120 200" fill="none">
+        <line x1="60" y1="0" x2="60" y2="20" stroke="#8b1c1c" stroke-width="3"/>
+        <ellipse cx="60" cy="100" rx="40" ry="70" fill="#8b1c1c" opacity="0.8"/>
+        <ellipse cx="60" cy="50" rx="20" ry="10" fill="#a52a2a"/>
+        <ellipse cx="60" cy="150" rx="20" ry="10" fill="#a52a2a"/>
+        <line x1="40" y1="60" x2="40" y2="140" stroke="#c0392b" stroke-width="1" opacity="0.5"/>
+        <line x1="60" y1="60" x2="60" y2="140" stroke="#c0392b" stroke-width="1" opacity="0.5"/>
+        <line x1="80" y1="60" x2="80" y2="140" stroke="#c0392b" stroke-width="1" opacity="0.5"/>
+        <line x1="60" y1="170" x2="60" y2="200" stroke="#8b1c1c" stroke-width="3"/>
+      </svg>
+
+      <h1 class="glow-text" id="s1-title">중국의 4대 전통 명절</h1>
+      <div class="title-line" id="s1-line"></div>
+      <p class="subtitle" id="s1-sub">
+        수천 년의 시간 동안 중국인들의 역사, 삶, 그리고 깊은 지혜와 가치가<br>
+        고스란히 응축된 가장 아름답고 성대한 네 개의 고유 명절을 만나봅니다.
+      </p>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 2: 춘절
+    =========================================== -->
+    <section class="slide-festival accent-red" id="slide2">
+      <div class="corner-circle"></div>
+      <div class="festival-num" id="s2-num">01</div>
+
+      <div class="festival-content" id="s2-content">
+        <div class="festival-label" id="s2-label">
+          01. 춘절 (春节) <span class="pinyin">Chūnjié</span>
+        </div>
+        <div class="festival-divider" id="s2-div"></div>
+        <div class="festival-main-title" id="s2-main">한해를 시작하는 중국 최대의 명절</div>
+
+        <div class="bullet-item" id="s2-b1">
+          <span class="bullet-diamond">❖</span>
+          <p class="bullet-text"><strong>날짜 및 의미</strong> 음력 1월 1일로, 한해를 마무리하고 새해를 맞이하는 중국에서 가장 성대하게 치러지는 대축제이자 전통 설날입니다.</p>
+        </div>
+        <div class="bullet-item" id="s2-b2">
+          <span class="bullet-diamond">❖</span>
+          <p class="bullet-text"><strong>대표 풍습</strong> 문 앞에 붉은 대련을 붙이고 '복(福)' 자를 거꾸로 붙여 복이 내려오길 기원하며, 액운을 쫓기 위한 폭죽놀이를 합니다.</p>
+        </div>
+        <div class="bullet-item" id="s2-b3">
+          <span class="bullet-diamond">❖</span>
+          <p class="bullet-text"><strong>대표 음식</strong> 북방 지역에서는 가족의 화목을 뜻하는 얇은 피 만두 '자오쯔(饺子)'를, 남방 지역에서는 성장과 발전을 기원하는 찹쌀떡 '녠가오(年糕)'를 먹습니다.</p>
+        </div>
+      </div>
+
+      <div class="festival-image" id="s2-img">
+        <img src="images/chunjie.png" alt="춘절 - 붉은 등불" id="s2-photo" />
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 3: 청명절
+    =========================================== -->
+    <section class="slide-festival slide-qingming accent-green" id="slide3">
+      <div class="corner-circle"></div>
+      <div class="festival-num" id="s3-num">02</div>
+
+      <div class="festival-content" id="s3-content">
+        <div class="festival-label" id="s3-label">
+          02. 청명절 (清明节) <span class="pinyin" style="color:var(--green-light)">Qīngmíngjié</span>
+        </div>
+        <div class="festival-divider" id="s3-div" style="background:linear-gradient(90deg,var(--green-qingming),transparent)"></div>
+        <div class="festival-main-title" id="s3-main">조상을 기리고 봄의 생기를 맞는 날</div>
+
+        <div class="bullet-item" id="s3-b1">
+          <span class="bullet-diamond" style="color:var(--green-qingming)">❖</span>
+          <p class="bullet-text"><strong style="color:var(--green-qingming)">날짜 및 의미</strong> 양력 4월 4일~6일경으로, 하늘이 맑고 따뜻한 기운이 만물에 깃드는 봄의 절기이자 조상의 은혜를 되새기는 명절입니다.</p>
+        </div>
+        <div class="bullet-item" id="s3-b2">
+          <span class="bullet-diamond" style="color:var(--green-qingming)">❖</span>
+          <p class="bullet-text"><strong style="color:var(--green-qingming)">대표 풍습</strong> 조상의 묘를 찾아 정성껏 벌초와 성묘를 하는 소묘(扫墓)를 올리며, 따스한 봄볕 아래 교외로 봄나들이(踏青)를 가기도 합니다.</p>
+        </div>
+        <div class="bullet-item" id="s3-b3">
+          <span class="bullet-diamond" style="color:var(--green-qingming)">❖</span>
+          <p class="bullet-text"><strong style="color:var(--green-qingming)">대표 음식</strong> 생명력이 넘치는 쑥 즙을 짜서 찹쌀과 반죽하여 달콤한 팥소나 고기소를 넣어 쪄낸 동그란 녹색 떡 '청단(青团, 칭탄)'을 주로 만들어 먹습니다.</p>
+        </div>
+      </div>
+
+      <div class="festival-image" id="s3-img">
+        <img src="images/qingming.png" alt="청명절 - 청단" id="s3-photo" />
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 4: 단오절
+    =========================================== -->
+    <section class="slide-festival accent-yellow" id="slide4">
+      <div class="corner-circle"></div>
+      <div class="festival-num" id="s4-num">03</div>
+
+      <div class="festival-content" id="s4-content">
+        <div class="festival-label" id="s4-label">
+          03. 단오절 (端午节) <span class="pinyin">Duānwǔjié</span>
+        </div>
+        <div class="festival-divider" id="s4-div"></div>
+        <div class="festival-main-title" id="s4-main">애국 시인을 기리고 건강을 비는 날</div>
+
+        <div class="bullet-item" id="s4-b1">
+          <span class="bullet-diamond">❖</span>
+          <p class="bullet-text"><strong>날짜 및 의미</strong> 음력 5월 5일로, 옛 초나라의 애국 시인 '굴원(屈原)'이 멱라수에 투신하자 그를 애도하고 구하기 위해 모여들던 전통에서 유래했습니다.</p>
+        </div>
+        <div class="bullet-item" id="s4-b2">
+          <span class="bullet-diamond">❖</span>
+          <p class="bullet-text"><strong>대표 풍습</strong> 굴원의 영혼을 위로하기 위해 화려한 용 모양 배를 만들어 강가에서 경주를 치르는 격동적인 용선 경주(龙舟)를 벌입니다.</p>
+        </div>
+        <div class="bullet-item" id="s4-b3">
+          <span class="bullet-diamond">❖</span>
+          <p class="bullet-text"><strong>대표 음식</strong> 찹쌀을 대나무나 갈대 잎으로 감싸서 쪄낸 '쫑즈(粽子)'를 만들어 먹습니다. 이는 물고기들이 굴원의 시신을 해치지 못하도록 먹이로 던져준 것에서 비롯되었습니다.</p>
+        </div>
+      </div>
+
+      <div class="festival-image" id="s4-img">
+        <img src="images/duanwu.png" alt="단오절 - 쫑즈" id="s4-photo" />
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 5: 중추절
+    =========================================== -->
+    <section class="slide-festival accent-blue" id="slide5">
+      <div class="corner-circle"></div>
+      <div class="festival-num" id="s5-num">04</div>
+
+      <div class="festival-content" id="s5-content">
+        <div class="festival-label" id="s5-label">
+          04. 중추절 (中秋节) <span class="pinyin">Zhōngqiūjié</span>
+        </div>
+        <div class="festival-divider" id="s5-div"></div>
+        <div class="festival-main-title" id="s5-main">보름달 아래 누리는 가족의 단란함</div>
+
+        <div class="bullet-item" id="s5-b1">
+          <span class="bullet-diamond">❖</span>
+          <p class="bullet-text"><strong>날짜 및 의미</strong> 음력 8월 15일로, 한국의 추석에 해당하는 가을 최대 명절입니다. 둥글게 꽉 찬 보름달을 바라보며 가족 구성원의 완벽한 화합(团圆)을 소망합니다.</p>
+        </div>
+        <div class="bullet-item" id="s5-b2">
+          <span class="bullet-diamond">❖</span>
+          <p class="bullet-text"><strong>대표 풍습</strong> 가족들이 정원에 모여 달맞이를 하고 달에 제사를 지내며(赏月), 밝게 빛나는 풍등(孔明灯)을 하늘 높이 쏘아 올려 복을 구합니다.</p>
+        </div>
+        <div class="bullet-item" id="s5-b3">
+          <span class="bullet-diamond">❖</span>
+          <p class="bullet-text"><strong>대표 음식</strong> 화합과 완전함을 뜻하는 둥근 보름달 모양을 본떠 만든 전통 과자 '월병(月饼)'을 다정하게 나누어 먹는 전통이 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="festival-image" id="s5-img">
+        <img src="images/zhongqiu.png" alt="중추절 - 월병" id="s5-photo" />
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 6: 비교표
+    =========================================== -->
+    <section class="slide-table" id="slide6">
+      <div class="corner-circle"></div>
+
+      <div class="table-title" id="s6-title">중국 4대 명절 종합 비교</div>
+      <div class="table-divider" id="s6-div"></div>
+
+      <table class="comparison-table" id="s6-table">
+        <thead id="s6-thead">
+          <tr>
+            <th>명절명 (한어병음)</th>
+            <th>한자 표기</th>
+            <th>지정 시기 (음력/양력)</th>
+            <th>대표 핵심 음식</th>
+            <th>지향하는 핵심 가치</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="s6-r1">
+            <td>춘절 (Chūnjié)</td>
+            <td>春节</td>
+            <td>음력 1월 1일</td>
+            <td>자오쯔 (饺子), 녠가오 (年糕)</td>
+            <td>새해 복 기원, 액운 퇴치, 가업 번창</td>
+          </tr>
+          <tr id="s6-r2">
+            <td>청명절 (Qīngmíngjié)</td>
+            <td>清明节</td>
+            <td>양력 4월 4일~6일경</td>
+            <td>청단 (青团)</td>
+            <td>조상 숭배, 성묘, 봄철 자연의 생기 환영</td>
+          </tr>
+          <tr id="s6-r3">
+            <td>단오절 (Duānwǔjié)</td>
+            <td>端午节</td>
+            <td>음력 5월 5일</td>
+            <td>쫑즈 (粽子)</td>
+            <td>시인 굴원 기리기, 질병 예방 및 신체 건강</td>
+          </tr>
+          <tr id="s6-r4">
+            <td>중추절 (Zhōngqiūjié)</td>
+            <td>中秋节</td>
+            <td>음력 8월 15일</td>
+            <td>월병 (月饼)</td>
+            <td>가족의 화목과 결합 (단원, 团圆)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 7: THANK YOU
+    =========================================== -->
+    <section class="slide-thankyou" id="slide7">
+      <div class="title-frame" id="s7-frame"></div>
+      <div class="title-circle-deco" id="s7-circle"></div>
+
+      <!-- Particles -->
+      <div class="particle" id="tp1" style="width:8px;height:8px;top:25%;left:12%"></div>
+      <div class="particle" id="tp2" style="width:5px;height:5px;top:65%;left:8%"></div>
+      <div class="particle" id="tp3" style="width:10px;height:10px;top:35%;right:18%"></div>
+      <div class="particle" id="tp4" style="width:6px;height:6px;top:75%;right:12%"></div>
+      <div class="particle" id="tp5" style="width:12px;height:12px;top:15%;left:40%"></div>
+      <div class="particle" id="tp6" style="width:4px;height:4px;top:85%;right:40%"></div>
+
+      <!-- Decorative chinese characters -->
+      <div style="position:absolute;font-size:8em;color:rgba(139,28,28,0.04);font-family:'Noto Serif KR',serif;font-weight:900;top:-10%;left:-2%;line-height:1;pointer-events:none;user-select:none;letter-spacing:-0.1em" id="s7-deco-chars">春清端秋</div>
+
+      <div class="thankyou-main glow-text" id="s7-main">THANK YOU</div>
+      <div class="title-line" id="s7-line" style="margin:0.4em auto 0.6em;width:200px"></div>
+      <div class="thankyou-sub" id="s7-sub">감사합니다</div>
+    </section>
+
+  </div>
+</div>
+
+<!-- Reveal.js -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+
+<script>
+  // ============================================================
+  // GSAP Plugin Registration
+  // ============================================================
+  gsap.registerPlugin(TextPlugin);
+
+  // ============================================================
+  // PARTICLE CANVAS BACKGROUND
+  // ============================================================
+  (function initCanvas() {
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * W;
+        this.y = Math.random() * H;
+        this.r = Math.random() * 3 + 1;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
+        this.alpha = Math.random() * 0.4 + 0.05;
+        this.color = Math.random() > 0.5 ? '139,28,28' : '181,134,13';
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+    function loop() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(loop);
+    }
+    loop();
+  })();
+
+  // ============================================================
+  // RIPPLE ON SLIDE CHANGE
+  // ============================================================
+  function fireRipple(x, y) {
+    const el = document.getElementById('ripple');
+    const size = Math.max(window.innerWidth, window.innerHeight) * 2.5;
+    gsap.set(el, {
+      width: size, height: size,
+      left: x - size / 2, top: y - size / 2,
+      scale: 0, opacity: 1
+    });
+    gsap.to(el, { scale: 1, opacity: 0, duration: 0.9, ease: 'power2.out' });
+  }
+
+  // ============================================================
+  // SLIDE 1 ANIMATION
+  // ============================================================
+  function animSlide1() {
+    const tl = gsap.timeline();
+    tl.set('#slide1', { opacity: 1 })
+      // Frame expand
+      .from('#s1-frame', { scaleX: 0, duration: 0.8, ease: 'power3.out', transformOrigin: 'left center' })
+      // Circle spin in
+      .from('#s1-circle', { scale: 0, rotation: -180, duration: 0.8, ease: 'back.out(1.5)' }, '-=0.5')
+      // Particles float
+      .from(['#p1','#p2','#p3','#p4','#p5'], {
+        scale: 0, opacity: 0, stagger: 0.1, duration: 0.5, ease: 'back.out(2)'
+      }, '-=0.5')
+      // Lantern SVG
+      .from('.lantern-svg', { y: -50, opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.3')
+      // Title character-by-character reveal
+      .from('#s1-title', { opacity: 0, y: 40, duration: 0.7, ease: 'power3.out' }, '-=0.3')
+      // Line expand
+      .to('#s1-line', { width: '300px', duration: 0.6, ease: 'power2.inOut' }, '-=0.2')
+      // Subtitle
+      .from('#s1-sub', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.2')
+      // Bottom dots
+      .to('#s1-dots', { opacity: 1, duration: 0.4 })
+      .from('#s1-dots > div', { scale: 0, stagger: 0.1, duration: 0.3, ease: 'back.out(2)' }, '-=0.3');
+
+    // Continuous floating particles
+    ['#p1','#p2','#p3','#p4','#p5'].forEach((id, i) => {
+      gsap.to(id, {
+        y: `+=${15 + i * 5}`,
+        x: `+=${10 - i * 3}`,
+        duration: 2 + i * 0.5,
+        yoyo: true,
+        repeat: -1,
+        ease: 'sine.inOut',
+        delay: i * 0.3
+      });
+    });
+  }
+
+  // ============================================================
+  // FESTIVAL SLIDE ANIMATION (slides 2-5)
+  // ============================================================
+  function animFestivalSlide(slideNum) {
+    const s = `s${slideNum}`;
+    const tl = gsap.timeline();
+
+    tl
+      // Label slide in from top
+      .from(`#${s}-label`, { y: -30, opacity: 0, duration: 0.6, ease: 'power3.out' })
+      // Divider line expand
+      .to(`#${s}-div`, { width: '100%', duration: 0.5, ease: 'power2.inOut' }, '-=0.2')
+      // Main title
+      .from(`#${s}-main`, { opacity: 0, x: -30, duration: 0.6, ease: 'power3.out' }, '-=0.2')
+      // Big number fade
+      .from(`#${s}-num`, { opacity: 0, scale: 0.5, duration: 0.8, ease: 'back.out(1.5)' }, '-=0.5')
+      // Bullet items staggered
+      .to([`#${s}-b1`,`#${s}-b2`,`#${s}-b3`], {
+        opacity: 1,
+        x: 0,
+        duration: 0.5,
+        stagger: 0.2,
+        ease: 'power2.out'
+      }, '-=0.3')
+      // Diamond bullets
+      .to(`#slide${slideNum} .bullet-diamond`, {
+        opacity: 1,
+        scale: 1.3,
+        duration: 0.3,
+        stagger: 0.15,
+        ease: 'back.out(2)',
+        yoyo: true,
+        yoyoEase: 'power1.in'
+      }, '-=0.8')
+      // Image: clip-path reveal from right
+      .from(`#${s}-photo`, {
+        clipPath: 'inset(0 100% 0 0)',
+        duration: 0.9,
+        ease: 'power3.inOut'
+      }, 0.2)
+      // Image slight zoom
+      .from(`#${s}-photo`, {
+        scale: 1.15,
+        duration: 1.2,
+        ease: 'power2.out'
+      }, 0.2);
+  }
+
+  // ============================================================
+  // SLIDE 6 — 애니메이션 없음 (즉시 표시)
+  // ============================================================
+  function animSlide6() {
+    // 애니메이션 제거됨
+  }
+
+  // ============================================================
+  // SLIDE 7 — 애니메이션 없음 (즉시 표시)
+  // ============================================================
+  function animSlide7() {
+    // 애니메이션 제거됨
+  }
+
+  // ============================================================
+  // REVEAL.JS INIT
+  // ============================================================
+  Reveal.initialize({
+    hash: true,
+    transition: 'none',   // We handle transitions with GSAP
+    transitionSpeed: 'fast',
+    backgroundTransition: 'none',
+    slideNumber: 'c/t',
+    controls: true,
+    progress: true,
+    center: false,
+    width: '100%',
+    height: '100%',
+    margin: 0,
+    minScale: 0.1,
+    maxScale: 2.0,
+    plugins: []
+  });
+
+  // ============================================================
+  // SLIDE CHANGE HANDLER
+  // ============================================================
+  Reveal.on('slidechanged', event => {
+    const idx = event.indexh;  // 0-based
+
+    // Fire ripple from center
+    fireRipple(window.innerWidth / 2, window.innerHeight / 2);
+
+    switch (idx) {
+      case 0: animSlide1(); break;
+      case 1: animFestivalSlide(2); break;
+      case 2: animFestivalSlide(3); break;
+      case 3: animFestivalSlide(4); break;
+      case 4: animFestivalSlide(5); break;
+      case 5: animSlide6(); break;
+      case 6: animSlide7(); break;
+    }
+  });
+
+  // First slide auto-trigger
+  Reveal.on('ready', () => {
+    animSlide1();
+  });
+
+  // ============================================================
+  // KEYBOARD HINT FADE
+  // ============================================================
+  setTimeout(() => {
+    gsap.to('.scroll-hint', { opacity: 0, duration: 1, delay: 3 });
+  }, 2000);
+
+  // ============================================================
+  // MOUSE PARALLAX on festival slides
+  // ============================================================
+  document.addEventListener('mousemove', (e) => {
+    const curSlide = Reveal.getCurrentSlide();
+    if (!curSlide) return;
+    const photo = curSlide.querySelector('img');
+    if (!photo) return;
+
+    const xRatio = (e.clientX / window.innerWidth - 0.5) * 2;
+    const yRatio = (e.clientY / window.innerHeight - 0.5) * 2;
+
+    gsap.to(photo, {
+      x: xRatio * 10,
+      y: yRatio * 10,
+      duration: 1.2,
+      ease: 'power1.out'
+    });
+  });
+
+</script>
+</body>
+</html>
